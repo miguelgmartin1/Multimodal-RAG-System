@@ -1,1 +1,1 @@
-# ML-Model-Monitoring-
+# Multimodal RAG System using AWS Bedrock and FAISS
