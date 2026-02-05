@@ -1,25 +1,106 @@
-# Multimodal RAG System using AWS Bedrock and FAISS
-This project aims to design and implement a Multimodal Retrieval-Augmented
-Generation (RAG) system for a restaurant aggregator app, enhancing its capability to
-deliver precise food recommendations tailored to individual preferences and dietary
-needs. The system will integrate and process multiple data types—textual descriptions
-and visual content—from restaurants to generate personalized suggestions. Utilizing
-technologies such as Amazon S3 for data storage, Amazon Bedrock for image
-summarization, and FAISS for efficient similarity search, the system will encode and
-retrieve vectorized data representations. A user interface powered by Streamlit will
-facilitate interactive and user-friendly querying, ultimately leading to dynamic and
-context-aware recommendation generation.
+# Multimodal RAG System for Personalized Restaurant Recommendations
 
-Data Description
-The dataset comprises a CSV file containing detailed information on menu items from
-various restaurants, including identifiers, names, cuisine types, nutritional values,
-dietary warnings, vegetarian status, image paths, ratings, serves, and prices.
-Additionally, there is a corresponding folder of images for each menu item, enhancing
-the multimodal aspect of the data for analysis and recommendation system training.
-Tech Stack
-➔ Language: Python 3.10.4
-➔ Libraries: boto3, awscli, pandas, langchain, langchain-community, faiss-cpu,
-streamlit, streamlit-chat
-➔ Model: Claude-Sonnet Multimodal Model, AWS Titan Embeddings from AWS
-Bedrock
-➔ Cloud Platform: Amazon Web Services (AWS)
+## Overview
+This project implements a **Multimodal Retrieval-Augmented Generation (RAG) system** designed for a restaurant aggregator application.  
+Its goal is to deliver **highly personalized food recommendations** by combining textual and visual information from restaurant menus, taking into account user preferences, dietary restrictions, and nutritional needs.
+
+By leveraging multimodal embeddings, vector similarity search, and large language models, the system enables **context-aware, accurate, and explainable recommendations** through an interactive user interface.
+
+---
+
+## Problem Statement
+Traditional recommendation systems often rely solely on structured or textual data, limiting their ability to fully understand food items and user preferences.
+
+This project addresses that limitation by:
+- Combining **textual menu data** and **food images**
+- Encoding both modalities into vector representations
+- Using a RAG pipeline to generate natural-language recommendations grounded in retrieved evidence
+
+---
+
+## Solution Architecture
+The system follows a modular, cloud-based architecture:
+
+1. **Data Storage**
+   - Menu metadata stored as structured CSV files
+   - Food images stored in Amazon S3
+
+2. **Multimodal Processing**
+   - Image summarization and understanding via Amazon Bedrock multimodal models
+   - Text and image embeddings generated using AWS Titan Embeddings
+
+3. **Vector Search**
+   - Embeddings indexed using FAISS for fast and scalable similarity search
+
+4. **Retrieval-Augmented Generation**
+   - Relevant menu items retrieved based on user queries
+   - Context injected into an LLM to generate grounded, personalized responses
+
+5. **User Interface**
+   - Streamlit-based UI for interactive querying and real-time recommendations
+
+---
+
+## Data Description
+The dataset consists of:
+
+- **CSV file** containing:
+  - Menu item ID
+  - Item name
+  - Restaurant and cuisine type
+  - Nutritional values
+  - Dietary warnings (allergens, intolerances)
+  - Vegetarian status
+  - Ratings
+  - Serving size
+  - Price
+  - Image path reference
+
+- **Image folder**
+  - One image per menu item
+  - Used to enrich recommendations through visual understanding
+
+This multimodal setup allows the system to reason beyond text-only descriptions.
+
+---
+
+## Tech Stack
+
+### Language
+- Python 3.10.4
+
+### Libraries & Frameworks
+- boto3
+- awscli
+- pandas
+- langchain
+- langchain-community
+- faiss-cpu
+- streamlit
+- streamlit-chat
+
+### Models
+- Claude Sonnet (Multimodal)
+- AWS Titan Embeddings (via Amazon Bedrock)
+
+### Cloud Platform
+- Amazon Web Services (AWS)
+
+---
+
+## Key Features
+- Multimodal retrieval combining text and images
+- Semantic similarity search with FAISS
+- Retrieval-Augmented Generation for grounded responses
+- Cloud-native architecture using AWS services
+- Interactive and user-friendly Streamlit interface
+- Designed for scalability and extensibility
+
+---
+
+## How to Run the Project
+
+1. Clone the repository
+```bash
+git clone https://github.com/your-username/your-repo-name.git
+cd your-repo-name
